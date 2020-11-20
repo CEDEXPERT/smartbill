@@ -40,11 +40,6 @@ const App = () => {
     const fCatalog = cleanCatalog(values.catalog)
     const fBalanta = cleanBalanta(values.balanta)
     const balanta = generateBalanta(f401, f4111, fCatalog, fBalanta)
-    console.log(f401)
-    console.log(f4111)
-    console.log(fCatalog)
-    console.log(fBalanta)
-    console.log(balanta)
 
     const catalogFileContent = catalogHeader
         .concat('\n')
