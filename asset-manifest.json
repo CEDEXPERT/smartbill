@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/smartbill/static/css/main.ff1fe11d.chunk.css",
+    "main.js": "/smartbill/static/js/main.c1c1806d.chunk.js",
+    "main.js.map": "/smartbill/static/js/main.c1c1806d.chunk.js.map",
+    "runtime-main.js": "/smartbill/static/js/runtime-main.1615ee41.js",
+    "runtime-main.js.map": "/smartbill/static/js/runtime-main.1615ee41.js.map",
+    "static/js/2.39c12124.chunk.js": "/smartbill/static/js/2.39c12124.chunk.js",
+    "static/js/2.39c12124.chunk.js.map": "/smartbill/static/js/2.39c12124.chunk.js.map",
+    "static/js/3.d7bface6.chunk.js": "/smartbill/static/js/3.d7bface6.chunk.js",
+    "static/js/3.d7bface6.chunk.js.map": "/smartbill/static/js/3.d7bface6.chunk.js.map",
+    "index.html": "/smartbill/index.html",
+    "static/css/main.ff1fe11d.chunk.css.map": "/smartbill/static/css/main.ff1fe11d.chunk.css.map",
+    "static/js/2.39c12124.chunk.js.LICENSE.txt": "/smartbill/static/js/2.39c12124.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1615ee41.js",
+    "static/js/2.39c12124.chunk.js",
+    "static/css/main.ff1fe11d.chunk.css",
+    "static/js/main.c1c1806d.chunk.js"
+  ]
+}
