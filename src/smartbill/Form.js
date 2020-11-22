@@ -3,8 +3,18 @@ import LabeledInput from "./LabeledInput";
 
 const initialState = {
     name: '',
-    doc4111: '',
     doc401: '',
+    doc4111: '',
+    doc404: '',
+    doc462: '',
+    doc461: '',
+    doc408: '',
+    doc418: '',
+    doc403: '',
+    doc413: '',
+    doc4091: '',
+    doc4092: '',
+    doc419: '',
     balanta: '',
     catalog: ''
 }
@@ -43,8 +53,18 @@ const Form = ( { onGenerate }) => {
     return (
         <div className="form">
             <LabeledInput name="name" label="Nume(scurt, fara spatii)" type="text" onChange={onChange}/>
-            <LabeledInput name="doc4111" label="Fisier 4111" onChange={onChange}/>
             <LabeledInput name="doc401" label="Fisier 401" onChange={onChange}/>
+            <LabeledInput name="doc4111" label="Fisier 4111" onChange={onChange}/>
+            <LabeledInput name="doc404" label="Fisier 404" onChange={onChange}/>
+            <LabeledInput name="doc461" label="Fisier 461" onChange={onChange}/>
+            <LabeledInput name="doc462" label="Fisier 462" onChange={onChange}/>
+            <LabeledInput name="doc408" label="Fisier 408" onChange={onChange}/>
+            <LabeledInput name="doc418" label="Fisier 418" onChange={onChange}/>
+            <LabeledInput name="doc403" label="Fisier 403" onChange={onChange}/>
+            <LabeledInput name="doc413" label="Fisier 413" onChange={onChange}/>
+            <LabeledInput name="doc4091" label="Fisier 4091" onChange={onChange}/>
+            <LabeledInput name="doc4092" label="Fisier 4092" onChange={onChange}/>
+            <LabeledInput name="doc419" label="Fisier 419" onChange={onChange}/>
             <LabeledInput name="catalog" label="Fisier Catalog" onChange={onChange}/>
             <LabeledInput name="balanta" label="Fisier Balanta" onChange={onChange}/>
 

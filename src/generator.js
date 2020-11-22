@@ -23,7 +23,36 @@ export const generateBalanta = (file401Lines, file4111Lines, fileCatalogLines, f
         }
     })
 
+    /*
+    401.${c}`,
+    `404.${c}`,
+    `462.${c}`,
+    `4111.${c}`,
+    `461.${c}`,
+    `408.${c}`,
+    `418.${c}`,
+    `403.${c}`,
+    `413.${c}`,
+    `4091.${c}`,
+    `4092.${c}`,
+    `419.${c}`,
+     */
+    const accountMap = {
+        401: {}, //k
+        404: {}, //k
+        462: {}, // k
+        4111: {}, //k
+        461: {},  //k
+        408: {}, //k
+        418: {}, //k
+        403: {}, //k
+        413: {}, // k
+        4091: {}, //k
+        4092: {}, //k
+        419: {} //k
+    }
     const map401 = {}
+    const map404 = {}
     const map4111 = {}
     const entitiesCatalog = []
 
@@ -37,6 +66,8 @@ export const generateBalanta = (file401Lines, file4111Lines, fileCatalogLines, f
         }
         map401[entity.name] = entity.cont401
         map4111[entity.name] = entity.cont4111
+
+
         entitiesCatalog.push(entity)
     })
 

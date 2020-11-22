@@ -1,7 +1,7 @@
-const START_LINE_401 = 3
-const START_LINE_4111 = 14
+const START_LINE_4XX = 14
 
 const cleanFile = (file, startLine, cols) => {
+    if (!file) return null
     const lines = file.split(/\r?\n/);
 
     const cleanLines = []
@@ -16,12 +16,14 @@ const cleanFile = (file, startLine, cols) => {
     return cleanLines
 }
 
+const cleanAccountFile = (file) => cleanFile(file, START_LINE_4XX, 8)
+
 const clean401 = (file401) => {
-    return cleanFile(file401, START_LINE_401, 8)
+    return cleanFile(file401, START_LINE_4XX, 8)
 }
 
 const clean4111 = (file4111) => {
-    return cleanFile(file4111, START_LINE_4111, 8)
+    return cleanFile(file4111, START_LINE_4XX, 8)
 }
 
 function getCounter(index) {
@@ -127,6 +129,7 @@ const cleanBalanta = (balanta) => {
 export {
     clean401,
     clean4111,
+    cleanAccountFile,
     cleanCatalog,
     cleanBalanta
 }

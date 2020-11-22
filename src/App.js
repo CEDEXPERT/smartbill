@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './App.css';
 import Form from "./smartbill/Form";
-import {clean401, clean4111, cleanCatalog, cleanBalanta} from "./cleaner";
+import {clean401, clean4111, cleanCatalog, cleanBalanta, cleanAccountFile} from "./cleaner";
 import {generateBalanta} from "./generator";
 
 const catalogHeader = 'Denumire partener|CIF|401|404|462|4111|461|408|418|403|413|4091|4092|419|Platitor de TVA|TVA la incasare|Tara|Judetul|Reg com|Adresa|Localitate|Banca|Iban|Cod partener|Email|Pers contact|Telefon'
@@ -35,6 +35,37 @@ const App = () => {
 
   const generate = (values) => {
     setCompany(values.name)
+
+    /*
+    401: '',
+    4111: '',
+    404: '',
+    462: '',
+    461: '',
+    408: '',
+    418: '',
+    403: '',
+    413: '',
+    4091: '',
+    4092: '',
+    419: '',
+     */
+
+    const accounts = {
+      401: cleanAccountFile(values.doc401),
+      4111: cleanAccountFile(values.doc4111),
+      404: cleanAccountFile(values.doc404),
+      462: cleanAccountFile(values.doc462),
+      461: cleanAccountFile(values.doc461),
+      408: cleanAccountFile(values.doc408),
+      418: cleanAccountFile(values.doc418),
+      403: cleanAccountFile(values.doc403),
+      413: cleanAccountFile(values.doc413),
+      4091: '',
+      4092: '',
+      419: ''
+    }
+
     const f401 = clean401(values.doc401)
     const f4111 = clean4111(values.doc4111)
     const fCatalog = cleanCatalog(values.catalog)
