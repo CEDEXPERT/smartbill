@@ -10,21 +10,14 @@ const cleanFile = (file, startLine, cols) => {
         let split = lines[i].split(',')
         split = split.filter(i => !!i)
 
-        if (split.length === cols)
-            cleanLines.push(split.slice(1, split.length))
+        if (split.length === cols) {
+            cleanLines.push(split.slice(1, split.length).map(s => s.trim()))
+        }
     }
     return cleanLines
 }
 
 const cleanAccountFile = (file) => cleanFile(file, START_LINE_4XX, 8)
-
-const clean401 = (file401) => {
-    return cleanFile(file401, START_LINE_4XX, 8)
-}
-
-const clean4111 = (file4111) => {
-    return cleanFile(file4111, START_LINE_4XX, 8)
-}
 
 function getCounter(index) {
     //000001
@@ -49,7 +42,7 @@ const cleanCatalog = (catalog) => {
         const name = split[0]
         const cif = split[2]
         if (!!name) {
-            clients.push([name, cif])
+            clients.push([name.trim(), cif.trim()])
         }
     }
     //Denumire partener|CIF|401|404|462|4111|461|408|418|403|413|4091|4092|419|Platitor de TVA|TVA la incasare|Tara|Judetul|Reg com|Adresa|Localitate|Banca|Iban|Cod partener|Email|Pers contact|Telefon
@@ -121,14 +114,12 @@ const cleanBalanta = (balanta) => {
     const lines = balanta.split(/\r?\n/)
     const cleanLines = []
     for (let i = 1; i < lines.length; i++) {
-        cleanLines.push(splitLine(lines[i]))
+        cleanLines.push(splitLine(lines[i]).map(s => s.trim()))
     }
     return cleanLines;
 }
 
 export {
-    clean401,
-    clean4111,
     cleanAccountFile,
     cleanCatalog,
     cleanBalanta

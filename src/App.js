@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import './App.css';
 import Form from "./smartbill/Form";
-import {clean401, clean4111, cleanCatalog, cleanBalanta, cleanAccountFile} from "./cleaner";
+import {cleanAccountFile, cleanBalanta, cleanCatalog} from "./cleaner";
 import {generateBalanta} from "./generator";
-import {ACCOUNT_NUMBERS, ACCOUNTS_INITIAL_VALUE} from "./constants";
+import {ACCOUNT_NUMBERS} from "./constants";
 
 const catalogHeader = 'Denumire partener|CIF|401|404|462|4111|461|408|418|403|413|4091|4092|419|Platitor de TVA|TVA la incasare|Tara|Judetul|Reg com|Adresa|Localitate|Banca|Iban|Cod partener|Email|Pers contact|Telefon'
 const balantaHeader = 'Contul|Denumire cont|Solduri initiale an debitoare|Solduri initiale an creditoare|Rulaje totale debitoare|Rulaje totale creditoare|Solduri finale debitoare|Solduri finale creditoare'
