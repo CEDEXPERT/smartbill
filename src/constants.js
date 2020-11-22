@@ -15,6 +15,6 @@ export const ACCOUNT_NUMBERS = [
 
 export const ACCOUNTS_INITIAL_VALUE = () => {
     const obj = {}
-    ACCOUNT_NUMBERS.forEach(n => obj[n] = '')
+    ACCOUNT_NUMBERS.forEach(n => obj[`acc${n}`] = '')
     return obj
 }

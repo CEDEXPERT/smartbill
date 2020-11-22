@@ -44,7 +44,7 @@ const cleanCatalog = (catalog) => {
     const clients = []
     const lines = catalog.split(/\r?\n/);
 
-    for (let i = 4; i < lines.length; i++) {
+    for (let i = 3; i < lines.length; i++) {
         let split = lines[i].split(',')
         const name = split[0]
         const cif = split[2]
