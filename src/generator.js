@@ -28,10 +28,6 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         }
     })
 
-    const map401 = {}
-    const map404 = {}
-    const map4111 = {}
-
     const mapAccounts = {}
     ACCOUNT_NUMBERS.forEach(n => {
         mapAccounts[`acc${n}`] = {}
