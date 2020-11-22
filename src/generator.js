@@ -123,43 +123,6 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         return linesForAcc
     }
 
-    // function get401Lines() {
-    //     const lines401 = []
-    //
-    //     entities401.forEach(client => {
-    //         const cod = map401[client.name]
-    //         lines401.push([cod, client.name, client.siDebit,
-    //             client.siCredit, client.rDebit,
-    //             client.rCredit, client.sFlDebit,
-    //             client.sFCredit])
-    //     })
-    //
-    //     return lines401
-    // }
-    //
-    // function get4111Lines() {
-    //     const lines4111 = []
-    //
-    //     entities4111.forEach(client => {
-    //         const cod = map4111[client.name]
-    //         lines4111.push([cod, client.name, client.siDebit,
-    //             client.siCredit, client.rDebit,
-    //             client.rCredit, client.sFlDebit,
-    //             client.sFCredit])
-    //     })
-    //
-    //     return lines4111
-    // }
-
-    console.log('ENtities with name')
-    console.log(entitiesWithName)
-    console.log('Map accounts')
-    console.log(mapAccounts)
-    console.log('Accounts')
-    console.log(accounts)
-    console.log('Catalog parteneri')
-    console.log(fileCatalogLines)
-
     for (let i = 0; i < fileBalantaLines.length; i++) {
         const split = fileBalantaLines[i]
         const keep = [split[0], split[2], split[3], split[4], split[11], split[12], split[13], split[14]]
@@ -170,13 +133,9 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
             continue
         }
 
-        // if (isNaN(keep[0])) {
-        //     continue
-        // }
-
         // 408D pastram
         // 5121.1 pastram
-        // pastram randurile din balanta care au conturile de genul 408D, 1CLASA?
+        // pastram randurile din balanta care au conturile de genul 408D? DA
 
 
         const analyticLines = getAccountLines(accNr)
@@ -185,15 +144,6 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         } else {
             linesToKeep.push(keep)
         }
-
-
-        // if (keep[0] === '401') {
-        //     linesToKeep = linesToKeep.concat(get401Lines())
-        // } else if (keep[0] === '4111') {
-        //     linesToKeep = linesToKeep.concat(get4111Lines())
-        // } else {
-        //     linesToKeep.push(keep)
-        // }
     }
 
     return linesToKeep
