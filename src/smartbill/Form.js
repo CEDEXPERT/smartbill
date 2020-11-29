@@ -61,7 +61,7 @@ const Form = ( { onGenerate }) => {
     return (
         <div className="form">
             <LabeledInput name="name" label="Nume(scurt, fara spatii)" type="text" onChange={onChange}/>
-            <LabeledInput name="catalog" label="Fisier Catalog" onChange={onChange}/>
+            <LabeledInput name="catalog" label="Fisier Catalog Parteneri" onChange={onChange}/>
             <LabeledInput name="balanta" label="Fisier Balanta" onChange={onChange}/>
             {
                 ACCOUNT_NUMBERS.map(n => (

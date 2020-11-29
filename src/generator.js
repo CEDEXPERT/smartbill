@@ -119,6 +119,9 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         return linesForAcc
     }
 
+    let row441 = []
+    let row4418 = []
+
     for (let i = 0; i < fileBalantaLines.length; i++) {
         const split = fileBalantaLines[i]
         const keep = [split[0], split[2], split[3], split[4], split[11], split[12], split[13], split[14]]
@@ -132,7 +135,17 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         // 408D pastram
         // 5121.1 pastram
         // pastram randurile din balanta care au conturile de genul 408D? DA
+        // 441 trece in 4418
 
+        if (accNr === '441') {
+            row441 = keep
+            continue
+        }
+
+        if (accNr === '4418') {
+            row4418 = keep
+            continue
+        }
 
         const analyticLines = getAccountLines(accNr)
         if (analyticLines) {
@@ -140,6 +153,18 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         } else {
             linesToKeep.push(keep)
         }
+    }
+
+    if (row441.length > 0 && row4418.length === 0) {
+        row441[0] = '4418'
+        linesToKeep.push(row441)
+    } else if (row441.length > 0 && row4418.length > 0) {
+        for (let i = 2; i < row4418.length; i++) {
+            row4418[i] = parseInt(row4418[i]) + parseInt(row441[i])
+        }
+        linesToKeep.push(row4418)
+    } else if (row441.length === 0 && row4418.length > 0) {
+        linesToKeep.push(row4418)
     }
 
     return linesToKeep
