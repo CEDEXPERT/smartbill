@@ -119,7 +119,7 @@ const App = () => {
         {/*<button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
         {/*<button disabled={trezo === null} onClick={downloadTrezo}>Download fisier Trezo</button>*/}
       </div>
-      <span style={{marginTop: '50px', fontSize: '12px', color: 'white'}}>v0.11</span>
+      <span style={{marginTop: '50px', fontSize: '12px', color: 'white'}}>v0.12</span>
     </div>
   );
 }
