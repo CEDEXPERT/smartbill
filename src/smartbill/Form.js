@@ -27,7 +27,7 @@ const formInitialState = {
     ...ACCOUNTS_INITIAL_VALUE()
 }
 
-const Form = ( { onGenerate }) => {
+const Form = ( { onGenerate, onReset }) => {
     const [inputs, setInputs] = useState(formInitialState)
     const [disabled, setDisabled] = useState(false)
 
@@ -51,6 +51,7 @@ const Form = ( { onGenerate }) => {
         })
     }
     const reset = () => {
+        onReset()
         setInputs(initialState)
         const els = document.getElementsByClassName('input')
         for (let i = 0; i < els.length; i++)
@@ -69,8 +70,8 @@ const Form = ( { onGenerate }) => {
                 ))
             }
             <div className="buttonContainer">
-                <button disabled={disabled} onClick={generate}>Import</button>
-                <button onClick={reset}>reset</button>
+                <button disabled={disabled} onClick={generate}>Generate migration files</button>
+                <button onClick={reset}>Reset inputs</button>
             </div>
         </div>
     )

@@ -14,6 +14,11 @@ const App = () => {
   const [catalog, setCatalog ] = useState(null)
   const [balanta, setBalanta ] = useState(null)
 
+  const reset = () => {
+    setCatalog(null)
+    setBalanta(null)
+  }
+
   const downloadCatalog = () => {
     const element = document.createElement("a");
     const file = new Blob([catalog], {type: 'text/plain'});
@@ -60,15 +65,18 @@ const App = () => {
         .replace(/"/g,'')
         .replace(/,/g, '')
     setBalanta(balantaFileContent)
+
+    downloadCatalog()
+    downloadBalanta()
   }
 
   return (
     <div className="App">
-      <Form onGenerate={generate}/>
+      <Form onGenerate={generate} onReset={reset}/>
 
       <div className="outputs">
-        <button onClick={downloadCatalog}>Download fisier catalog</button>
-        <button onClick={downloadBalanta}>Download fisier balanta</button>
+        <button disabled={catalog === null} onClick={downloadCatalog}>Download fisier catalog</button>
+        <button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>
       </div>
     </div>
   );
