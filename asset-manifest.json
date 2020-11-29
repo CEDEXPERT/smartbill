@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartbill/static/css/main.182a3f07.chunk.css",
-    "main.js": "/smartbill/static/js/main.71363716.chunk.js",
-    "main.js.map": "/smartbill/static/js/main.71363716.chunk.js.map",
+    "main.js": "/smartbill/static/js/main.f26dbafa.chunk.js",
+    "main.js.map": "/smartbill/static/js/main.f26dbafa.chunk.js.map",
     "runtime-main.js": "/smartbill/static/js/runtime-main.1615ee41.js",
     "runtime-main.js.map": "/smartbill/static/js/runtime-main.1615ee41.js.map",
     "static/js/2.39c12124.chunk.js": "/smartbill/static/js/2.39c12124.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1615ee41.js",
     "static/js/2.39c12124.chunk.js",
     "static/css/main.182a3f07.chunk.css",
-    "static/js/main.71363716.chunk.js"
+    "static/js/main.f26dbafa.chunk.js"
   ]
 }
