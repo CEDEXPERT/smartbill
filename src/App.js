@@ -7,16 +7,19 @@ import {ACCOUNT_NUMBERS} from "./constants";
 
 const catalogHeader = 'Denumire partener|CIF|401|404|462|4111|461|408|418|403|413|4091|4092|419|Platitor de TVA|TVA la incasare|Tara|Judetul|Reg com|Adresa|Localitate|Banca|Iban|Cod partener|Email|Pers contact|Telefon'
 const balantaHeader = 'Contul|Denumire cont|Solduri initiale an debitoare|Solduri initiale an creditoare|Rulaje totale debitoare|Rulaje totale creditoare|Solduri finale debitoare|Solduri finale creditoare'
+const trezoHeader = 'Contul Contabil'
 
 const App = () => {
 
   const [company, setCompany] = useState('')
   const [catalog, setCatalog ] = useState(null)
   const [balanta, setBalanta ] = useState(null)
+  const [trezo, setTrezo] = useState(null)
 
   const reset = () => {
     setCatalog(null)
     setBalanta(null)
+    setTrezo(null)
   }
 
   const downloadCatalog = () => {
@@ -34,6 +37,15 @@ const App = () => {
     const file = new Blob([balanta], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
     element.download = `${company}Balanta.csv`;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  }
+
+  const downloadTrezo = () => {
+    const element = document.createElement("a");
+    const file = new Blob([trezo], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = `${company}Trezo.csv`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   }
@@ -66,7 +78,7 @@ const App = () => {
       return
     }
 
-    const balanta = generateBalanta(cleanAccounts, fCatalog, fBalanta)
+    const { balanta, trezo }= generateBalanta(cleanAccounts, fCatalog, fBalanta)
 
     const catalogFileContent = catalogHeader
         .concat('\n')
@@ -80,8 +92,20 @@ const App = () => {
         .replace(/,/g, '')
     setBalanta(balantaFileContent)
 
+    console.log(trezo)
+
+    const trezoFileContent = trezoHeader
+        .concat('\n')
+        .concat(trezo.join('\n'))
+        .replace(/"/g,'')
+
+    console.log(trezoFileContent)
+
+    setTrezo(trezoFileContent)
+
     downloadCatalog()
     downloadBalanta()
+    downloadTrezo()
   }
 
 

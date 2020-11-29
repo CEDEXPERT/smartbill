@@ -122,6 +122,8 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
     let row441 = []
     let row4418 = []
 
+    const trezo = []
+
     for (let i = 0; i < fileBalantaLines.length; i++) {
         const split = fileBalantaLines[i]
         const keep = [split[0], split[2], split[3], split[4], split[11], split[12], split[13], split[14]]
@@ -151,6 +153,18 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
             continue
         }
 
+        if (accNr === '5121') {
+            keep[0] = '5121.001'
+        }
+
+        if (accNr === '5124') {
+            keep[0] = '5124.001'
+        }
+
+        if (accNr.startsWith('5') && accNr !== '581' && accNr !== '5311') {
+            trezo.push(keep[0])
+        }
+
         const analyticLines = getAccountLines(accNr)
         if (analyticLines) {
             linesToKeep = linesToKeep.concat(analyticLines)
@@ -171,6 +185,9 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         linesToKeep.push(row4418)
     }
 
-    return linesToKeep
+    return {
+        balanta: linesToKeep,
+        trezo
+    }
 }
 
