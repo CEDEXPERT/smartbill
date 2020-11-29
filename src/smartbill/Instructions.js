@@ -64,6 +64,12 @@ const Instructions = () => {
                 <li>Se verifica Totalul General cu balanta importata din ProSoft</li>
                 <li>Se deschide sampania</li>
             </ul>
+            <p className="subtitle">8. Exceptii</p>
+            <ul>
+                <li>Daca in balanta exista contul 409 fara analitic, se va importa la sectiunea din aplicatie(4091 sau 4092)
+                    caruia ii apartine conform inregistrarilor din 409 si se modifica manual in balanta
+                </li>
+            </ul>
         </>
     )
 }

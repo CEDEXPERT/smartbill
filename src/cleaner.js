@@ -28,10 +28,6 @@ function getCounter(index) {
     for (let i = 0; i < 6 - str.length; i++) {
         buf += '0'
     }
-    if (index === 110) {
-        console.log(str)
-        console.log(buf.concat(str))
-    }
     return buf.concat(str)
 }
 
@@ -124,8 +120,12 @@ const cleanBalanta = (balanta) => {
     const presentAccounts = []
 
     for (let i = 0; i < cleanLines.length; i++) {
-        if (requiredAccounts.includes(cleanLines[i][0])) {
-            presentAccounts.push(cleanLines[i][0])
+        const accNr = cleanLines[i][0]
+        if (accNr === '409') {
+            window.alert('Atentie. Exista in balanta contul 409 fara analitic. Vezi sectiunea Exceptii din Instructiuni pt detalii')
+        }
+        if (requiredAccounts.includes(accNr)) {
+            presentAccounts.push(accNr)
         }
     }
 
