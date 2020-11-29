@@ -178,7 +178,9 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
         linesToKeep.push(row441)
     } else if (row441.length > 0 && row4418.length > 0) {
         for (let i = 2; i < row4418.length; i++) {
-            row4418[i] = parseInt(row4418[i]) + parseInt(row441[i])
+            const left = row4418[i].replace(/"/g, "").replace(/,/g, "")
+            const right = row441[i].replace(/"/g, "").replace(/,/g, "")
+            row4418[i] = parseFloat(left) + parseFloat(right)
         }
         linesToKeep.push(row4418)
     } else if (row441.length === 0 && row4418.length > 0) {
