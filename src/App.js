@@ -23,7 +23,6 @@ const App = () => {
   }
 
   const downloadCatalog = () => {
-    console.log(company)
     const element = document.createElement("a");
     const file = new Blob([catalog], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
@@ -81,8 +80,6 @@ const App = () => {
 
     const { balanta, trezo } = generateBalanta(cleanAccounts, fCatalog, fBalanta)
 
-    console.log(fCatalog)
-
     const catalogFileContent = catalogHeader
         .concat('\n')
         .concat(fCatalog.map(line => line.join('|')).join('\n'))
@@ -122,6 +119,7 @@ const App = () => {
         {/*<button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
         {/*<button disabled={trezo === null} onClick={downloadTrezo}>Download fisier Trezo</button>*/}
       </div>
+      <span style={{marginTop: '50px', fontSize: '12px', color: 'white'}}>v0.11</span>
     </div>
   );
 }
