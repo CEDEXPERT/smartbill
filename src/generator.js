@@ -132,6 +132,10 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
             continue
         }
 
+        if (accNr && accNr.includes('TOT')) {
+            continue
+        }
+
         // 408D pastram
         // 5121.1 pastram
         // pastram randurile din balanta care au conturile de genul 408D? DA

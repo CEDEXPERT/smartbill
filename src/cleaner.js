@@ -1,3 +1,5 @@
+import {ACCOUNT_NUMBERS} from "./constants";
+
 const START_LINE_4XX = 14
 
 const cleanFile = (file, startLine, cols) => {
@@ -116,7 +118,21 @@ const cleanBalanta = (balanta) => {
     for (let i = 1; i < lines.length; i++) {
         cleanLines.push(splitLine(lines[i]).map(s => s.trim()))
     }
-    return cleanLines;
+
+    const requiredAccounts = ACCOUNT_NUMBERS.map(n => n.toString())
+
+    const presentAccounts = []
+
+    for (let i = 0; i < cleanLines.length; i++) {
+        if (requiredAccounts.includes(cleanLines[i][0])) {
+            presentAccounts.push(cleanLines[i][0])
+        }
+    }
+
+    return {
+        cleanLines,
+        presentAccounts
+    };
 }
 
 export {

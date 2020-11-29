@@ -51,7 +51,21 @@ const App = () => {
     })
 
     const fCatalog = cleanCatalog(values.catalog)
-    const fBalanta = cleanBalanta(values.balanta)
+    const { cleanLines: fBalanta, presentAccounts } = cleanBalanta(values.balanta)
+
+    let all = true
+    for (let i = 0; i < presentAccounts.length; i++) {
+      const keyName = `acc${presentAccounts[i]}`
+      if (!values[keyName]) {
+        all = false
+      }
+    }
+
+    if (!all) {
+      window.alert(`Conform balantei, este nevoie de fisiere pt conturile: ${presentAccounts.join(",")}`)
+      return
+    }
+
     const balanta = generateBalanta(cleanAccounts, fCatalog, fBalanta)
 
     const catalogFileContent = catalogHeader
@@ -70,14 +84,16 @@ const App = () => {
     downloadBalanta()
   }
 
+
+
   return (
     <div className="App">
       <Form onGenerate={generate} onReset={reset}/>
 
-      <div className="outputs">
-        <button disabled={catalog === null} onClick={downloadCatalog}>Download fisier catalog</button>
-        <button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>
-      </div>
+      {/*<div className="outputs">*/}
+      {/*  <button disabled={catalog === null} onClick={downloadCatalog}>Download fisier catalog</button>*/}
+      {/*  <button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
+      {/*</div>*/}
     </div>
   );
 }
