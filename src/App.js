@@ -4,6 +4,7 @@ import Form from "./smartbill/Form";
 import {cleanAccountFile, cleanBalanta, cleanCatalog} from "./cleaner";
 import {generateBalanta} from "./generator";
 import {ACCOUNT_NUMBERS} from "./constants";
+import Instructions from "./smartbill/Instructions";
 
 const catalogHeader = 'Denumire partener|CIF|401|404|462|4111|461|408|418|403|413|4091|4092|419|Platitor de TVA|TVA la incasare|Tara|Judetul|Reg com|Adresa|Localitate|Banca|Iban|Cod partener|Email|Pers contact|Telefon'
 const balantaHeader = 'Contul|Denumire cont|Solduri initiale an debitoare|Solduri initiale an creditoare|Rulaje totale debitoare|Rulaje totale creditoare|Solduri finale debitoare|Solduri finale creditoare'
@@ -112,14 +113,19 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="left">
       <Form onGenerate={generate} onReset={reset}/>
-
       <div className="outputs">
         <button disabled={catalog === null} onClick={downloadFiles}>Download migration files</button>
         {/*<button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
         {/*<button disabled={trezo === null} onClick={downloadTrezo}>Download fisier Trezo</button>*/}
       </div>
-      <span style={{marginTop: '50px', fontSize: '12px', color: 'white'}}>v0.12</span>
+      <span style={{marginTop: '50px', fontSize: '12px', color: 'white'}}>v0.13</span>
+    </div>
+      <div className="right">
+        <p>Instructiuni</p>
+        <Instructions/>
+      </div>
     </div>
   );
 }

@@ -33,7 +33,7 @@ const LabeledInput = ( { label, name, type, onChange } ) => {
     return (
         <div className="inputContainer">
             <label>{label}</label>
-            <input className="input" id={name} name={name} type={inputType} onChange={onInputChange}/>
+            <input className="input" id={name} name={name} type={inputType} accept=".csv" onChange={onInputChange}/>
             {loading && <Spinner/>}
         </div>
     )
