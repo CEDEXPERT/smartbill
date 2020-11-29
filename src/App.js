@@ -23,6 +23,7 @@ const App = () => {
   }
 
   const downloadCatalog = () => {
+    console.log(company)
     const element = document.createElement("a");
     const file = new Blob([catalog], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
@@ -78,11 +79,14 @@ const App = () => {
       return
     }
 
-    const { balanta, trezo }= generateBalanta(cleanAccounts, fCatalog, fBalanta)
+    const { balanta, trezo } = generateBalanta(cleanAccounts, fCatalog, fBalanta)
+
+    console.log(fCatalog)
 
     const catalogFileContent = catalogHeader
         .concat('\n')
         .concat(fCatalog.map(line => line.join('|')).join('\n'))
+
     setCatalog(catalogFileContent)
 
     const balantaFileContent = balantaHeader
@@ -92,17 +96,16 @@ const App = () => {
         .replace(/,/g, '')
     setBalanta(balantaFileContent)
 
-    console.log(trezo)
-
     const trezoFileContent = trezoHeader
         .concat('\n')
         .concat(trezo.join('\n'))
         .replace(/"/g,'')
 
-    console.log(trezoFileContent)
-
     setTrezo(trezoFileContent)
 
+  }
+
+  const downloadFiles = () => {
     downloadCatalog()
     downloadBalanta()
     downloadTrezo()
@@ -114,10 +117,11 @@ const App = () => {
     <div className="App">
       <Form onGenerate={generate} onReset={reset}/>
 
-      {/*<div className="outputs">*/}
-      {/*  <button disabled={catalog === null} onClick={downloadCatalog}>Download fisier catalog</button>*/}
-      {/*  <button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
-      {/*</div>*/}
+      <div className="outputs">
+        <button disabled={catalog === null} onClick={downloadFiles}>Download migration files</button>
+        {/*<button disabled={balanta === null} onClick={downloadBalanta}>Download fisier balanta</button>*/}
+        {/*<button disabled={trezo === null} onClick={downloadTrezo}>Download fisier Trezo</button>*/}
+      </div>
     </div>
   );
 }
