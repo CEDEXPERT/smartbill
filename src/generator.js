@@ -123,6 +123,30 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
     let row4418 = []
 
     const trezo = []
+    let trezoCounters = {}
+
+    function getTrezoCounter(index) {
+        //000001
+        const str = index.toString()
+        let buf = ''
+        for (let i = 0; i < 3 - str.length; i++) {
+            buf += '0'
+        }
+        return buf.concat(str)
+    }
+
+    const getNexTrezo = (base) => {
+        const key = `acc${base}`
+        let current
+        if (trezoCounters[key]) {
+            trezoCounters[key] = trezoCounters[key] + 1
+            current = trezoCounters[key]
+        } else {
+            current = 1
+            trezoCounters[key] = 1
+        }
+        return `${base}.${getTrezoCounter(current)}`
+    }
 
     for (let i = 0; i < fileBalantaLines.length; i++) {
         const split = fileBalantaLines[i]
@@ -153,12 +177,12 @@ export const generateBalanta = (accounts, fileCatalogLines, fileBalantaLines) =>
             continue
         }
 
-        if (accNr === '5121') {
-            keep[0] = '5121.001'
+        if (accNr.startsWith('5121')) {
+            keep[0] = getNexTrezo('5121')
         }
 
-        if (accNr === '5124') {
-            keep[0] = '5124.001'
+        if (accNr.startsWith('5124')) {
+            keep[0] = getNexTrezo('5124')
         }
 
         if (accNr.startsWith('5') && accNr !== '581' && accNr !== '5311') {
